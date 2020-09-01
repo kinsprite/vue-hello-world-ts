@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
@@ -11,6 +13,11 @@ const routes: Array<RouteConfig> = [
     component: Home,
   },
   {
+    path: '/books',
+    name: 'Books',
+    component: () => import(/* webpackChunkName: "books" */ '../views/BooksPage.vue'),
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -20,10 +27,10 @@ const routes: Array<RouteConfig> = [
   },
 ];
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes,
-});
-
-export default router;
+export function createRouter() {
+  return new VueRouter({
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes,
+  });
+}

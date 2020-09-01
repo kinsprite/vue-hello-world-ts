@@ -100,6 +100,12 @@ module.exports = {
       },
     },
     {
+      files: ['*.config.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+    {
       files: ['*.d.ts'],
       rules: {
         '@typescript-eslint/no-empty-interface': 'off',
