@@ -1,17 +1,42 @@
 // vue.config.js
 
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
+const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
+
+const isClient = process.env.VUE_SSR !== 'true';
+console.log('process.env.VUE_SSR', process.env.VUE_SSR);
+console.log('isClient', isClient);
+
+const getClientWebpackConfig = () => ({
+  plugins: [
+    new VueSSRClientPlugin(),
+  ],
+  optimization: {
+    minimize: false,
+  },
+});
+
+const getServerWebpackConfig = () => ({
+  target: 'node',
+  devtool: 'source-map',
+  output: {
+    libraryTarget: 'commonjs2',
+  },
+  plugins: [
+    new VueSSRServerPlugin(),
+  ],
+  optimization: {
+    minimize: false,
+    runtimeChunk: false,
+    splitChunks: false,
+  },
+});
 
 module.exports = {
   pages: {
     index: {
-      // entry for the page
-      entry: 'src/entry-client',
+      entry: isClient ? 'src/entry-client' : 'src/entry-server',
     },
   },
-  configureWebpack: {
-    plugins: [
-      new VueSSRClientPlugin(),
-    ],
-  },
+  configureWebpack: isClient ? getClientWebpackConfig() : getServerWebpackConfig(),
 };

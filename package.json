@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build",
-    "build:ssr": "vue-cli-service build --dest dist-ssr --target lib --formats commonjs src/entry-server.ts",
+    "serve": "cross-env VUE_SSR=false vue-cli-service serve --open",
+    "build": "cross-env VUE_SSR=false vue-cli-service build",
+    "build:ssr": "cross-env VUE_SSR=true vue-cli-service build --dest dist-ssr --target lib --formats commonjs",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
@@ -36,6 +36,7 @@
     "@vue/eslint-config-airbnb": "^5.1.0",
     "@vue/eslint-config-typescript": "^5.1.0",
     "@vue/test-utils": "^1.0.3",
+    "cross-env": "^7.0.2",
     "eslint": "^7.8.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.20.2",
