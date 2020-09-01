@@ -4,6 +4,8 @@ const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 
 const isClient = process.env.VUE_SSR !== 'true';
+const isProd = process.env.NODE_ENV === 'production';
+
 console.log('process.env.VUE_SSR', process.env.VUE_SSR);
 console.log('isClient', isClient);
 
@@ -37,6 +39,9 @@ module.exports = {
     index: {
       entry: isClient ? ['src/entry-client', 'src/registerServiceWorker'] : 'src/entry-server',
     },
+  },
+  css: {
+    extract: isClient && isProd,
   },
   configureWebpack: isClient ? getClientWebpackConfig() : getServerWebpackConfig(),
 };
