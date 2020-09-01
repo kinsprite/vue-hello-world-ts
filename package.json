@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "cross-env VUE_SSR=false vue-cli-service serve --open",
     "build": "cross-env VUE_SSR=false vue-cli-service build",
-    "build:ssr": "cross-env VUE_SSR=true vue-cli-service build --dest dist-ssr --target lib --formats commonjs",
+    "build:ssr": "cross-env VUE_SSR=true vue-cli-service build --dest dist-ssr --formats commonjs --skip-plugins pwa,workbox",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"

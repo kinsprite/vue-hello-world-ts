@@ -35,7 +35,7 @@ const getServerWebpackConfig = () => ({
 module.exports = {
   pages: {
     index: {
-      entry: isClient ? 'src/entry-client' : 'src/entry-server',
+      entry: isClient ? ['src/entry-client', 'src/registerServiceWorker'] : 'src/entry-server',
     },
   },
   configureWebpack: isClient ? getClientWebpackConfig() : getServerWebpackConfig(),
