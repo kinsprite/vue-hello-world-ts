@@ -30,6 +30,7 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-param-reassign': ['error', { props: false }],
     'max-len': ['error', 120, 2,
       {
         ignoreUrls: true,

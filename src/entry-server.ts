@@ -1,4 +1,4 @@
-import { createApp } from './app';
+import { createApp } from './main';
 import { AsyncDataComponent } from './views/aysncParam';
 
 export interface Context {
