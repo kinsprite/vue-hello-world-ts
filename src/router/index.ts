@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
+import { TransitionTo } from './types';
 
 Vue.use(VueRouter);
 
@@ -34,8 +35,13 @@ export function createRouter() {
     routes,
   });
 
-  router.beforeEach((to, from, next) => {
-    if (to.path.match(/^\/lazy(\/.*)?$/)) {
+  const { history } = router as any;
+  const originalTransitionTo = history.transitionTo as TransitionTo;
+
+  const transitionTo: TransitionTo = function transitionTo(location, onComplete?, onAbort?) {
+    const path = (typeof location === 'string') ? location : (location.path as string);
+
+    if (path.match(/^\/lazy(\/.*)?$/)) {
       import(/* webpackChunkName: "lazy" */ '../views/lazy').then(({ initModule }) => {
         const { app } = router;
         const output = { firstLoading: false };
@@ -43,29 +49,22 @@ export function createRouter() {
           app, router, store: app.$store, output,
         });
 
-        if (output.firstLoading) {
-          console.log(from);
+        const from = router.currentRoute;
+        console.log('From route is', from);
 
-          if (from.matched.length === 0) {
-            // Page F5
-            next('/');
-            router.replace(to.path);
-          } else {
-            // From others
-            next(false);
-            Promise.resolve().then(() => router.push(to.path));
-          }
-        } else {
-          next();
+        originalTransitionTo.call(history, location, onComplete, onAbort);
+      }, (err) => {
+        console.error('[ERROR] Lazy routes failed.', err);
+        // Do non-thing when error
+        if (onAbort) {
+          onAbort(err);
         }
-      }, (e) => {
-        console.error('[ERROR] Lazy routes failed.', e);
-        next(false);
       });
     } else {
-      next();
+      originalTransitionTo.call(history, location, onComplete, onAbort);
     }
-  });
+  };
 
+  history.transitionTo = transitionTo;
   return router;
 }

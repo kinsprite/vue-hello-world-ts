@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { Store } from 'vuex';
-import VueRouter from 'vue-router';
+import VueRouter, { RawLocation } from 'vue-router';
 import { RootState } from '../store/types';
 
 export interface InitModule {
@@ -12,4 +12,10 @@ export interface InitModule {
       firstLoading: boolean,
     },
   }): any
+}
+
+export interface TransitionTo {
+  (location: RawLocation,
+    onComplete?: (...args: any[]) => any,
+    onAbort?: (...args: any[]) => any): void
 }
