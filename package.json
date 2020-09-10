@@ -8,11 +8,13 @@
     "build:ssr": "cross-env VUE_SSR=true vue-cli-service build --dest dist-ssr --formats commonjs --skip-plugins pwa,workbox",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "ssr": "node server/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
+    "sanitize.css": "^12.0.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",
@@ -22,6 +24,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
+    "@types/node": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -1,3 +1,37 @@
+const rules = {
+  'class-methods-use-this': 'off',
+  'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+  'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+  'no-param-reassign': ['error', { props: false }],
+  'max-len': ['error', 120, 2,
+    {
+      ignoreUrls: true,
+      ignoreComments: false,
+      ignoreRegExpLiterals: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
+    },
+  ],
+  'import/extensions': [
+    'error',
+    'ignorePackages',
+    {
+      js: 'never',
+      jsx: 'never',
+      mjs: 'never',
+      ts: 'never',
+      tsx: 'never',
+    },
+  ],
+  '@typescript-eslint/explicit-function-return-type': 'off',
+  '@typescript-eslint/no-floating-promises': 'off',
+  '@typescript-eslint/no-unsafe-assignment': 'off',
+  '@typescript-eslint/no-unsafe-member-access': 'off',
+  '@typescript-eslint/no-unused-vars': ['warn', { args: 'none' }],
+  '@typescript-eslint/no-explicit-any': 'off',
+  '@typescript-eslint/explicit-module-boundary-types': 'off',
+};
+
 module.exports = {
   root: true,
   env: {
@@ -27,38 +61,7 @@ module.exports = {
     sourceType: 'module',
     // project: './tsconfig.json',
   },
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-param-reassign': ['error', { props: false }],
-    'max-len': ['error', 120, 2,
-      {
-        ignoreUrls: true,
-        ignoreComments: false,
-        ignoreRegExpLiterals: true,
-        ignoreStrings: true,
-        ignoreTemplateLiterals: true,
-      },
-    ],
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        mjs: 'never',
-        ts: 'never',
-        tsx: 'never',
-      },
-    ],
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-floating-promises': 'off',
-    '@typescript-eslint/no-unsafe-assignment': 'off',
-    '@typescript-eslint/no-unsafe-member-access': 'off',
-    '@typescript-eslint/no-unused-vars': ['warn', { args: 'none' }],
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-  },
+  rules,
   overrides: [
     {
       files: [
@@ -82,6 +85,7 @@ module.exports = {
         sourceType: 'module',
         // project: './tsconfig.json',
       },
+      rules,
     },
     {
       files: [

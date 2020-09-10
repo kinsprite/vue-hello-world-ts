@@ -1,6 +1,7 @@
 import { RouteConfig } from 'vue-router';
 import LazyPage from './LazyPage.vue';
-import LazySub from './LazySub.vue';
+
+const LazySub = () => import(/* webpackChunkName: "lazy-sub" */ './LazySub.vue');
 
 const routes: Array<RouteConfig> = [
   {

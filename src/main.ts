@@ -3,6 +3,9 @@
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 
+import './index.css';
+import './sass/root.scss';
+
 import App from './App.vue';
 // import './registerServiceWorker';
 import { createRouter } from './router';

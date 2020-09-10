@@ -44,13 +44,10 @@ export function createRouter() {
     if (path.match(/^\/lazy(\/.*)?$/)) {
       import(/* webpackChunkName: "lazy" */ '../views/lazy').then(({ initModule }) => {
         const { app } = router;
-        const output = { firstLoading: false };
-        initModule({
-          app, router, store: app.$store, output,
-        });
 
-        const from = router.currentRoute;
-        console.log('From route is', from);
+        initModule({
+          app, router, store: app.$store,
+        });
 
         originalTransitionTo.call(history, location, onComplete, onAbort);
       }, (err) => {

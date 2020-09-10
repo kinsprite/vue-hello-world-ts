@@ -8,9 +8,6 @@ export interface InitModule {
     app: Vue,
     router: VueRouter,
     store: Store<RootState>,
-    output: {
-      firstLoading: boolean,
-    },
   }): any
 }
 

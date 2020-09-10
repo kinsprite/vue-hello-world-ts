@@ -1341,6 +1341,11 @@
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.6.0.tgz?cache=0&sync_timestamp=1597673211853&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-14.6.0.tgz#7d4411bf5157339337d7cff864d9ff45f177b499"
   integrity sha1-fUQRv1FXM5M318/4ZNn/RfF3tJk=
 
+"@types/node@^12.0.0":
+  version "12.12.55"
+  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-12.12.55.tgz?cache=0&sync_timestamp=1599170008644&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-12.12.55.tgz#0aa266441cb9e1fd3e415a8f619cb7d776667cdd"
+  integrity sha1-CqJmRBy54f0+QVqPYZy313ZmfN0=
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.npm.taobao.org/@types/normalize-package-data/download/@types/normalize-package-data-2.4.0.tgz?cache=0&sync_timestamp=1596839422580&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnormalize-package-data%2Fdownload%2F%40types%2Fnormalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -9844,6 +9849,11 @@ sane@^4.0.3:
     micromatch "^3.1.4"
     minimist "^1.1.1"
     walker "~1.0.5"
+
+sanitize.css@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.npm.taobao.org/sanitize.css/download/sanitize.css-12.0.0.tgz#5fa4ece10330b8358c594d5f0250c054ff20776c"
+  integrity sha1-X6Ts4QMwuDWMWU1fAlDAVP8gd2w=
 
 sass-loader@^8.0.2:
   version "8.0.2"

@@ -2,10 +2,11 @@ import { Module } from 'vuex';
 import fetchLazy from '../../api/fetchLazy';
 import { LazyState, RootState } from '../../store/types';
 
-export const SET_VALUE = 'setValue';
-export const FETCH_LAZY = 'fetchLazy';
+export const SET_VALUE = 'SET_VALUE';
+export const FETCH_LAZY = 'FETCH_LAZY';
 
 const lazyModule: Module<LazyState, RootState> = {
+  namespaced: true,
   state: () => ({
     value: 0,
   }),
